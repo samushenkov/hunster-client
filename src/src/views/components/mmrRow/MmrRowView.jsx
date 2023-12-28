@@ -2,12 +2,12 @@
 import { MmrView } from '../mmr/MmrView';
 import { MmrRowComponent } from './MmrRowView.Components';
 
-export function MmrRowView({ statistics }) {
+export function MmrRowView({ player }) {
 
     return (
         <MmrRowComponent>
             <span>mmr:</span>
-            <MmrView statistics={statistics} />
+            <MmrView player={player} />
         </MmrRowComponent>
     );
 }

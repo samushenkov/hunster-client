@@ -2,6 +2,7 @@
 import { useEffect, useState } from 'react';
 
 import { waitTimeoutAsync } from 'utils/promise';
+import { getOwnPlayer, getPlayerByProfileId } from '../utils/player';
 
 import { hunsterApi } from 'services/api';
 
@@ -69,7 +70,7 @@ export function useLastMatch() {
     return match;
 }
 
-export function useLastMatchStatistics() {
+export function useLastMatchStatistics(profileId) {
 
     const match = useLastMatch();
 
@@ -77,35 +78,10 @@ export function useLastMatchStatistics() {
         return null;
     }
 
-    let teamOwn = null;
-    let teamPlayerOwn = null;
+    if (profileId != null){
 
-    for (const team of match.missionBag.teams) {
-
-        if (team.ownTeam) {
-            teamOwn = team;
-            break;
-        }
+        return getPlayerByProfileId(match, profileId);
     }
 
-    if (teamOwn == null) {
-        return null;
-    }
-
-    for (const teamPlayer of teamOwn.players) {
-
-        if (teamPlayer.isPartner === false) {
-            teamPlayerOwn = teamPlayer;
-            break;
-        }
-    }
-
-    if (teamPlayerOwn == null) {
-        return null;
-    }
-
-    return {
-        team: teamOwn,
-        teamPlayer: teamPlayerOwn
-    };
+    return getOwnPlayer(match);
 }

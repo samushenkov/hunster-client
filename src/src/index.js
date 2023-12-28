@@ -1,11 +1,13 @@
 import React from 'react';
-import { createRoot } from 'react-dom/client';
 
-import { AppView } from './views/AppView';
+import { createRoot } from 'react-dom/client';
+import { RouterProvider } from "react-router-dom";
+
+import { router } from 'services/router';
 
 const appView = (
     <React.StrictMode>
-        <AppView />
+        <RouterProvider router={router} />
     </React.StrictMode>
 );
 

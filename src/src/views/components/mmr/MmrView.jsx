@@ -3,9 +3,8 @@ import { useCallback, useRef } from 'react';
 
 import CountUp from 'react-countup';
 
-export function MmrView({ statistics }) {
+export function MmrView({ player }) {
 
-    const player = statistics.teamPlayer;
     const playerMmr = player.mmr;
 
     const state = useRef(playerMmr);

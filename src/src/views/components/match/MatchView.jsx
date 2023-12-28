@@ -6,21 +6,21 @@ import { MatchCard, MatchCardRow } from './MatchView.Components';
 import { MmrRowView } from '../mmrRow/MmrRowView';
 import { StarsRowView } from '../starsRow/StarsRowView';
 
-export function MatchView() {
+export function MatchView({ profileId }) {
 
-    const statistics = useLastMatchStatistics();
+    const player = useLastMatchStatistics(profileId);
 
-    if (statistics == null) {
+    if (player == null) {
         return null;
     }
 
     return (
         <MatchCard>
             <MatchCardRow>
-                <StarsRowView statistics={statistics} />
+                <StarsRowView player={player} />
             </MatchCardRow>
             <MatchCardRow>
-                <MmrRowView statistics={statistics} />
+                <MmrRowView player={player} />
             </MatchCardRow>
         </MatchCard>
     );

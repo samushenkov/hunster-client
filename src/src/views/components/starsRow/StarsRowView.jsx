@@ -2,9 +2,8 @@
 import { StarView } from 'views/components/star/StarView';
 import { StarsRowComponent } from './StarsRowView.Components';
 
-export const StarsRowView = ({ statistics }) => {
+export const StarsRowView = ({ player }) => {
 
-    const player = statistics.teamPlayer;
     const playerMmr = player.mmr;
 
     return (
